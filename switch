@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+eww close-all \
+	&& sudo nixos-rebuild switch \
+	&& eww open systembar

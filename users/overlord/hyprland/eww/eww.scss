@@ -1,0 +1,23 @@
+* { all: unset; }
+
+.master {
+	font-family: "Fira Code";
+	font-size: 14;
+	margin: 0;
+	padding: 5;
+	border-radius: 0.5em;
+	background-color: rgba(#3d464e, 0.5);
+}
+
+.battery-metric {
+	border-radius: 10px;
+}
+
+.button {
+	padding: 0;
+	font-size: 16;
+}
+
+.workspaces button:hover {
+  color: blue;
+}
