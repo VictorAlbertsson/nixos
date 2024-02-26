@@ -9,10 +9,22 @@ in {
     vimdiffAlias = true;
     defaultEditor = true;
     extraLuaConfig = builtins.readFile ./extra-config.lua;
+    extraPackages = with pkgs; [
+      ripgrep
+      fzf
+      gopls
+      unstable.htmx-lsp
+      tailwindcss-language-server
+    ];
     plugins = with pkgs.vimPlugins; [
     { 
       plugin = nix-colors-lib.vimThemeFromScheme { scheme = config.colorscheme; };
       config = "colorscheme nix-${config.colorscheme.slug}";
+    }
+    {
+      plugin = nvim-web-devicons;
+      type = "lua";
+      config = builtins.readFile ./nvim-web-devicons.lua;
     }
     { 
       plugin = telescope-nvim;
@@ -23,6 +35,16 @@ in {
       plugin = which-key-nvim;
       type = "lua";
       config = builtins.readFile ./which-key-nvim.lua;
+    }
+    {
+      plugin = trouble-nvim;
+      type = "lua";
+      config = builtins.readFile ./trouble-nvim.lua;
+    }
+    {
+      plugin = nvim-lspconfig;
+      type = "lua";
+      config = builtins.readFile ./nvim-lspconfig.lua;
     }
     { 
       plugin =
@@ -36,6 +58,7 @@ in {
         bash
         # Programming Languages
         c
+        go
         rust
         javascript
         # Markup Languages

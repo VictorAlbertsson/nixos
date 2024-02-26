@@ -20,6 +20,10 @@ in {
     username = "overlord";
     homeDirectory = "/home/overlord";
     stateVersion = "23.11";
+    # For linewise bash completion
+    file.".inputrc".text = ''
+      set completion-display-width 0
+    '';
   };
 
   # `config`:
@@ -63,6 +67,12 @@ in {
     nix-direnv.enable = true;
   };
 
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    escapeTime = 0;
+  };
+
   services.mpris-proxy.enable = true;
   services.playerctld = {
     enable = true;
@@ -87,7 +97,7 @@ in {
     settings = {
       main = {
         #term = "xterm-256color";
-        font = "Fira Code:size=12";
+        font = "M+1Code Nerd Font:size=12";
 	dpi-aware = "yes";
       };
       key-bindings = {

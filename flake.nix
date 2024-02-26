@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-23.11";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
     nix-colors.url = "github:misterio77/nix-colors";
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -18,25 +19,28 @@
     };
   };
 
-  outputs = { nixpkgs, nix-colors, sops-nix, home-manager, hyprland, ...}:
+  outputs = { nixpkgs, nixpkgs-unstable, nix-colors, sops-nix, home-manager, hyprland, ...}:
   {
-    nixosConfigurations."typewriter" = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit nix-colors hyprland;
+    nixosConfigurations = {
+      "typewriter" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit nixpkgs-unstable nix-colors hyprland;
+        };
+        modules = [
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          hyprland.nixosModules.default
+          ./overlays.nix
+          ./hosts/typewriter
+          {
+            home-manager.extraSpecialArgs = { inherit nix-colors hyprland; };
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."overlord" = import ./users/overlord;
+          }
+        ];
       };
-      modules = [
-        sops-nix.nixosModules.sops
-        home-manager.nixosModules.home-manager
-        hyprland.nixosModules.default
-        ./hosts/typewriter
-        {
-          home-manager.extraSpecialArgs = { inherit nix-colors hyprland; };
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users."overlord" = import ./users/overlord;
-        }
-      ];
     };
   };
 }
