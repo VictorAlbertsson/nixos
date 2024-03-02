@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 set -e
 eww close-all
+
 pushd /etc/nixos
 sudo git diff -U0 *.nix
 echo "NixOS Rebuilding..."
@@ -9,4 +10,5 @@ current=$(nixos-rebuild list-generations | grep current)
 sudo git commit -am "$current"
 echo "NixOS Rebuild Successful!"
 popd
+
 eww open systembar
