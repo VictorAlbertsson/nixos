@@ -98,7 +98,7 @@ in {
       main = {
         #term = "xterm-256color";
         font = "M+1Code Nerd Font:size=12";
-	dpi-aware = "yes";
+	      dpi-aware = "yes";
       };
       key-bindings = {
         clipboard-copy = "Control+Shift+c XF86Copy";

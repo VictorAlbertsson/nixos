@@ -132,7 +132,7 @@ in {
     packages = with pkgs; [
       (nerdfonts.override { fonts = ["MPlus"]; })
       noto-fonts-color-emoji
-      #material-symbols
+      material-symbols
     ];
   };
 
