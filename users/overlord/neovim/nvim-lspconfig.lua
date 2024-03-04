@@ -1,8 +1,26 @@
+local DEFAULT_FQBN = "arduino:avr:nano"
+local board_list = {
+  ["/home/overlord/projects/arduino/foderautomat"] = "arduino:renesas_uno:unor4wifi",
+}
 local lspconfig = require('lspconfig')
 
 lspconfig.gopls.setup({})
 lspconfig.htmx.setup({})
 lspconfig.tailwindcss.setup({})
+lspconfig.arduino_language_server.setup({
+  on_new_config = function(config, root)
+    local fqbn = board_list[root]
+    if not fqbn then
+      vim.notify(("Could not find which FQBN to use in %q. Defaulting to %q."):format(root_dir, DEFAULT_FQBN))
+      fqbn = DEFAULT_FQBN
+    end
+    config.cmd = {
+      "arduino-language-server",
+      "-cli-config", "/home/overlord/.arduino15/arduino-cli.yaml",
+      "-fqbn", fqbn
+    }
+  end
+})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),

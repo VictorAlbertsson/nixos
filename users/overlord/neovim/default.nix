@@ -60,6 +60,7 @@ in {
         c
         go
         rust
+        arduino
         javascript
         # Markup Languages
         css

@@ -146,6 +146,7 @@ in {
     insecure-obsidian
     macchina
     pwvucontrol ## TODO: Replace with an EWW widget
+    arduino-cli
     # Hyprland
     swww 
     cliphist
