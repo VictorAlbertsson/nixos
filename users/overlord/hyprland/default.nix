@@ -48,14 +48,15 @@
       ];
       bind = [
 	      "$mainMod, L, exec, rofi -show drun -display-drun 'Launch'"
-        ''$mainMod, C, exec, rofi -show calc -modi calc -display-calc 'Compute' -no-show-match -no-sort -no-persist-history -calc-command "wtype '{result}'"''
-	      "$mainMod, V, exec, cliphist list | rofi -dmenu -p 'Clipboard' | cliphist decode | wl-copy"
-	      "$mainMod, B, exec, rofi-bluetooth"
 	      "$mainMod, K, killactive"
-        "$mainMod, D, exec, foot"
+        "$mainMod, J, exec, foot"
+        "$mainMod, T, exec, rofi -show top -modi top -display-top 'Top'"
+        ''$mainMod, E, exec, rofi -show calc -modi calc -display-calc 'Expression' -no-show-match -no-sort -no-persist-history -calc-command "wtype '{result}'"''
+	      "$mainMod, D, exec, rofi-bluetooth"
+	      "$mainMod, C, exec, cliphist list | rofi -dmenu -p 'Clipboard' | cliphist decode | wl-copy"
 	      "$mainMod, O, togglefloating,"
 	      "$mainMod, P, pseudo"
-	      "$mainMod, J, togglesplit,"
+	      "$mainMod, I, togglesplit,"
 	      "$mainMod, left, movefocus, l"
 	      "$mainMod, right, movefocus, r"
 	      "$mainMod, up, movefocus, u"

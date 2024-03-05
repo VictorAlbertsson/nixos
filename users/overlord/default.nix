@@ -84,7 +84,7 @@ in {
     cycle = true;
     theme = "paper-float";
     package = pkgs.rofi-wayland;
-    plugins = with pkgs; [ rofi-calc ];
+    plugins = with pkgs; [ rofi-top rofi-calc ];
     pass = {
       enable = true;
       package = pkgs.rofi-pass-wayland;
