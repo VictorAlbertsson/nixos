@@ -170,7 +170,7 @@ in {
   '';
   xdg.configFile."macchina/themes/primary.toml".text = ''
     hide_ascii = true
-    separator = ""
+    separator = ""
     [box]
     visible = true
   '';
