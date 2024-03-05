@@ -47,7 +47,7 @@
     :space-evenly false
     ;; TODO: Bluetooth module
     ;; TODO: Volume module
-    "${time.hour}:${time.min} 󰖩 ${network} "))
+    "  ${time.hour}:${time.min}   󰖩  ${network}   󰂯"))
 
 (defwidget workspace-layout []
   (box
@@ -74,8 +74,8 @@
     :valign "center"
     :spacing 5
     :space-evenly false
-    (button :onclick "poweroff" "")
-    (button :onclick "reboot" "")))
+    (button :onclick "poweroff" " 󰅖 ")
+    (button :onclick "reboot" " 󰑐 ")))
 
 (defpoll time
   :interval "5s"

@@ -14,6 +14,7 @@ in {
       fzf
       gopls
       unstable.htmx-lsp
+      clang
       arduino-language-server
       tailwindcss-language-server
     ];
