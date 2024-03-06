@@ -47,7 +47,7 @@
     :space-evenly false
     ;; TODO: Bluetooth module
     ;; TODO: Volume module
-    "  ${time.hour}:${time.min}   󰖩  ${network}   󰂯"))
+    "  ${time.hour}:${time.min}   󰖩  ${network}     ${volume}"))
 
 (defwidget workspace-layout []
   (box
@@ -78,12 +78,18 @@
     (button :onclick "reboot" " 󰑐 ")))
 
 (defpoll time
-  :interval "5s"
+  :interval "1s"
   :initial `date +'{"hour":"%H","min":"%M"}'`
   `date +'{"hour":"%H","min":"%M"}'`)
 
 (defpoll network
-  :interval "3s"
+  :interval "1s"
   :initial `N/A`
   `nmcli -t -f SIGNAL,ACTIVE device wifi \
     | awk -F':' '{if($2=="yes")print$1}'`)
+
+(defpoll volume
+  :interval "1s"
+  :initial "N/A"
+  `awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master)\
+    | tr -d '[]%'`)
