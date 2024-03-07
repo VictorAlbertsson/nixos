@@ -15,7 +15,6 @@ in {
       gopls
       unstable.htmx-lsp
       clang
-      arduino-language-server
       tailwindcss-language-server
     ];
     plugins = with pkgs.vimPlugins; [
@@ -62,7 +61,6 @@ in {
         c
         go
         rust
-        arduino
         javascript
         # Markup Languages
         css
