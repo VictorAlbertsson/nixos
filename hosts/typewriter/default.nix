@@ -62,20 +62,17 @@ in {
 
   powerManagement.enable = true;
   services.auto-cpufreq = {
-    enable = true;
-    settings = {
-      battery = {
-# # These settings seems to cause flickering
-# governor = "powersave";
-# turbo = "never";
-        governor = "performance";
-        turbo = "auto";
-      };
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
-    };
+    enable = false;
+    #settings = {
+    #  battery = {
+    #    governor = "performance";
+    #    turbo = "auto";
+    #  };
+    #  charger = {
+    #    governor = "performance";
+    #    turbo = "auto";
+    #  };
+    #};
   };
 
   sops = {
