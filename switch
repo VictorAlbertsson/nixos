@@ -2,13 +2,14 @@
 set -e
 eww close-all
 
-pushd ~/nixos
+pushd ~/nixos >/dev/null
 git diff -U0 *.nix
 echo "NixOS Rebuilding..."
+touch nixos-switch.log
 sudo nixos-rebuild switch --flake . &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
 current=$(nixos-rebuild list-generations | grep current)
 git commit -am "$current"
 echo "NixOS Rebuild Successful!"
-popd
+popd >/dev/null
 
 eww open systembar
