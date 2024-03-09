@@ -60,20 +60,12 @@ in {
     themePackages = [ boot-theme-packages ];
   };
 
+  # `fwupd-efi` broken currently, also TUXEDO doesn't yet post firmware to LVFS
+  ## services.fwupd = {
+  ##   enable = true;
+  ##   package = pkgs.fwupd-efi;
+  ## };
   powerManagement.enable = true;
-  services.auto-cpufreq = {
-    enable = false;
-    #settings = {
-    #  battery = {
-    #    governor = "performance";
-    #    turbo = "auto";
-    #  };
-    #  charger = {
-    #    governor = "performance";
-    #    turbo = "auto";
-    #  };
-    #};
-  };
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
