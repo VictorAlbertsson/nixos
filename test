@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-eww close-all \
-	&& sudo nixos-rebuild test \
-	&& eww open systembar
+eww close-all
+nixos-rebuild test
+eww open systembar
