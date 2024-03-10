@@ -140,13 +140,13 @@ in {
   };
 
   home.packages = with pkgs; [
+    pwvucontrol ## TODO: Replace with an EWW widget
+    macchina
     htop
     brave # Primary browser
-    firefox # Backup browser
     insecure-obsidian
-    macchina
-    pwvucontrol ## TODO: Replace with an EWW widget
     arduino
+    teapot
     # Hyprland
     swww 
     cliphist
