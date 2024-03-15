@@ -28,6 +28,7 @@ in {
   zramSwap.memoryPercent = 25;
 
   hardware.cpu.amd.updateMicrocode = true;
+  powerManagement.enable = true;
 
   hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
@@ -65,17 +66,12 @@ in {
   ##   enable = true;
   ##   package = pkgs.fwupd-efi;
   ## };
-  powerManagement.enable = true;
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
-# TODO: Make this config properly global
-# age.keyFile = "/home/overlord/.config/sops/age/keys.txt";
     age.keyFile = "/keys/age/sops";
     secrets = {
       "pvpn-key" = {};
-      "aliashydra-token" = {};
-      "aliashydra-salt" = {};
     };
   };
 
