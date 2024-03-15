@@ -188,12 +188,13 @@ in {
 
   environment.systemPackages = with pkgs; [
     git
-      bat
-      eza
-      sops
-      wget
-      playerctl
-      brightnessctl
+    age
+    bat
+    eza
+    sops
+    wget
+    playerctl
+    brightnessctl
   ];
 
   system.stateVersion = "23.11";
