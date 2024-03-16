@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
 eww close-all
-nixos-rebuild test
+
+sudo nixos-rebuild test --flake ./
+
 eww open systembar
+
+git diff -U0
