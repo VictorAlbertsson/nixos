@@ -85,10 +85,6 @@ in {
     theme = "paper-float";
     package = pkgs.rofi-wayland;
     plugins = with pkgs; [ rofi-top rofi-calc ];
-    pass = {
-      enable = true;
-      package = pkgs.rofi-pass-wayland;
-    };
   };
 
   programs.foot = {
@@ -143,7 +139,7 @@ in {
     pwvucontrol ## TODO: Replace with an EWW widget
     macchina
     htop
-    brave # Primary browser
+    brave
     insecure-obsidian
     arduino
     teapot
