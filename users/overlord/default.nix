@@ -1,14 +1,4 @@
-{ lib, config, pkgs, nix-colors, ... }:
-let
-  insecure-obsidian = lib.throwIf (lib.versionOlder "1.4.16" pkgs.obsidian.version) "Obsidian no longer requires EOL Electron" (
-    pkgs.obsidian.override {
-      electron = pkgs.electron_25.overrideAttrs (_: {
-        preFixup = "patchelf --add-needed ${pkgs.libglvnd}/lib/libEGL.so.1 $out/bin/electron"; # NixOS/nixpkgs#272912
-        meta.knownVulnerabilities = [ ]; # NixOS/nixpkgs#273611
-      });
-    }
-  );
-in {
+{ lib, config, pkgs, nix-colors, ... }: {
   imports = [
     nix-colors.homeManagerModule
     ./hyprland
@@ -26,7 +16,7 @@ in {
     '';
   };
 
-  # `config`:
+  #* `config`
   colorscheme = {
     slug = "nord";
     name = "Nord";
@@ -92,7 +82,6 @@ in {
     server.enable = true;
     settings = {
       main = {
-        #term = "xterm-256color";
         font = "M+1Code Nerd Font:size=12";
 	      dpi-aware = "yes";
       };
@@ -105,7 +94,7 @@ in {
         background = "${config.colorscheme.palette.base00}"; # "2e3440"
         foreground = "${config.colorscheme.palette.base05}"; # "e5e9f0"
 
-        # normal
+        #* normal
         regular0 = "${config.colorscheme.palette.base00}"; # "2e3440"
         regular1 = "${config.colorscheme.palette.base0B}"; # "bf616a"
         regular2 = "${config.colorscheme.palette.base0E}"; # "a3be8c"
@@ -115,7 +104,7 @@ in {
         regular6 = "${config.colorscheme.palette.base08}"; # "88c0d0"
         regular7 = "${config.colorscheme.palette.base05}"; # "e5e9f0"
 
-        # bright
+        #* bright
         bright0 = "${config.colorscheme.palette.base04}"; # "4c566a"
         bright1 = "${config.colorscheme.palette.base0C}"; # "d08770"
         bright2 = "${config.colorscheme.palette.base01}"; # "3b4252"
@@ -125,7 +114,7 @@ in {
         bright6 = "${config.colorscheme.palette.base0A}"; # "5e81ac"
         bright7 = "${config.colorscheme.palette.base07}"; # "8fbcbb"
 
-        # misc
+        #* misc
         selection-background = "${config.colorscheme.palette.base05}"; # "e5e9f0"
         selection-foreground = "${config.colorscheme.palette.base00}"; # "2e3440"
         urls = "${config.colorscheme.palette.base04}"; # "d8dee9"
@@ -140,26 +129,15 @@ in {
     macchina
     htop
     brave
-    insecure-obsidian
+    obsidian
     arduino
     teapot
-    # Hyprland
+    #* Hyprland
     swww 
     cliphist
     wl-clipboard
     rofi-bluetooth
   ];
-
-  # HiDPI patch for Obsidian
-  xdg.desktopEntries."obsidian" = {
-    categories = [ "Office" ];
-    comment = "Knowledge base";
-    exec = "env OBSIDIAN_USE_WAYLAND=1 obsidian -enable-features=UseOzonePlatform -ozone-platform=wayland %u";
-    icon = "obsidian";
-    mimeType = [ "x-scheme-handler/obsidian" ];
-    name = "Obsidian";
-    type = "Application";
-  };
 
   xdg.configFile."macchina/macchina.toml".text = ''
     theme = "primary"
