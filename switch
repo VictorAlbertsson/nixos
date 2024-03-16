@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 eww close-all
-
 sudo nixos-rebuild switch --flake ./
-
 eww open systembar
 
-git diff -U0
 current=$(nixos-rebuild list-generations | grep current)
 git commit -am "$current"
