@@ -139,9 +139,9 @@ in {
     macchina
     htop
     brave
-    insecure-obsidian
-    arduino
     teapot
+    insecure-obsidian
+    prismlauncher ## Minecraft launcher
     #* Hyprland
     swww 
     cliphist
