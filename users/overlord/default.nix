@@ -150,6 +150,7 @@ in {
     htop
     brave
     teapot
+    unstable.protonmail-desktop
     insecure-obsidian
     prismlauncher ## Minecraft launcher
     #* Hyprland
