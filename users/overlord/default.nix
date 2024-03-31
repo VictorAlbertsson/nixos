@@ -87,6 +87,15 @@ in {
     plugins = with pkgs; [ rofi-top rofi-calc ];
   };
 
+  programs.kitty = {
+    enable = true;
+    font = {
+      name = "M+1Code Nerd Font";
+      size = 12;
+    };
+    shellIntegration.enableBashIntegration = true;
+  };
+
   programs.foot = {
     enable = true;
     server.enable = true;
@@ -135,6 +144,7 @@ in {
   };
 
   home.packages = with pkgs; [
+    xterm
     pwvucontrol ## TODO: Replace with an EWW widget
     macchina
     htop
