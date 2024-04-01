@@ -128,9 +128,15 @@ in {
       };
     };
     packages = with pkgs; [
-      (nerdfonts.override { fonts = ["MPlus"]; })
+      (nerdfonts.override { fonts = ["MPlus", "Terminus"]; })
       noto-fonts-color-emoji
     ];
+  };
+
+  console = {
+    enable = true;
+    earlySetup = true;
+    font = "ter-i32b";
   };
 
   sound.enable = true;
