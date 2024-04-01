@@ -136,7 +136,8 @@ in {
   console = {
     enable = true;
     earlySetup = true;
-    font = "TerminessNerdFontMono-Regular.ttf";
+    font = "ter-i32b";
+    packages = with pkgs; [ terminus_font ];
   };
 
   sound.enable = true;
