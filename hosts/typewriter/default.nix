@@ -128,7 +128,7 @@ in {
       };
     };
     packages = with pkgs; [
-      (nerdfonts.override { fonts = ["MPlus", "Terminus"]; })
+      (nerdfonts.override { fonts = [ "MPlus" "Terminus" ]; })
       noto-fonts-color-emoji
     ];
   };
