@@ -136,7 +136,7 @@ in {
   console = {
     enable = true;
     earlySetup = true;
-    font = "ter-i32b";
+    font = "Terminess Nerd Font Mono";
   };
 
   sound.enable = true;
