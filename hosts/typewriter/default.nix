@@ -128,17 +128,17 @@ in {
       };
     };
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "MPlus" "Terminus" ]; })
+      (nerdfonts.override { fonts = [ "MPlus" ]; })
       noto-fonts-color-emoji
     ];
   };
 
-  console = {
-    enable = true;
-    earlySetup = true;
-    font = "ter-i32b";
-    packages = with pkgs; [ terminus_font ];
-  };
+  ##console = {
+  ##  enable = true;
+  ##  earlySetup = true;
+  ##  font = "ter-i32b";
+  ##  packages = with pkgs; [ terminus_font ];
+  ##};
 
   sound.enable = true;
   security.rtkit.enable = true;
