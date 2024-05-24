@@ -22,7 +22,7 @@
               # Clear clipboard on startup
 	      "cliphist wipe"
       ];
-      monitor = ",hires,auto,2";
+      monitor = ",highres,auto,2";
       xwayland.force_zero_scaling = true;
       env = [
         "XCURSOR_SIZE,32"
