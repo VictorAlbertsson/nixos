@@ -146,6 +146,7 @@
     xterm
     pwvucontrol ## TODO: Replace with an EWW widget
     macchina
+    fastfetch
     htop
     brave
     teapot
