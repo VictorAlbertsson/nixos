@@ -3,7 +3,6 @@
   home.packages = with pkgs; [ wtype ];
   programs.eww = {
     enable = true;
-    package = pkgs.eww-wayland;
     configDir = ./eww;
   };
 
