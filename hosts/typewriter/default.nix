@@ -172,10 +172,10 @@ in {
   programs.bash = {
     enableCompletion = true;
     shellAliases = {
-      c = "clear";
-      l = "eza -lhas type --color=auto";
-      d = "eza -TDhas type --color=auto -I .git";
-      grep = "grep --color=auto";
+      "grep" = "grep --color=auto";
+      "-c" = "clear";
+      "-l" = "eza -lhas tyep --color=auto";
+      "-t" = "eza -TDhas type --color=auto";
     };
     promptInit = ''
       PS1="\[\e[1;34m\]⟪\u@\h⟫\[\e[0m\]\n ↦ "
