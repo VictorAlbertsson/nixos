@@ -20,7 +20,7 @@
   xdg.desktopEntries = {
     obsidian = {
       name = "Obsidian";
-      exec = "obsidian --ozone-platform=wayland";
+      exec = "obsidian --ozone-platform=wayland %U";
     };
   };
 
