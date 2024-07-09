@@ -151,7 +151,7 @@ in {
     brave
     teapot
     unstable.protonmail-desktop
-    obsidian
+    insecure-obsidian
     prismlauncher ## Minecraft launcher
     #* Hyprland
     swww 
