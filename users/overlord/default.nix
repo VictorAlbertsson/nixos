@@ -144,6 +144,7 @@ in {
   };
 
   home.packages = with pkgs; [
+    xwayland
     xterm
     pwvucontrol ## TODO: Replace with an EWW widget
     macchina
