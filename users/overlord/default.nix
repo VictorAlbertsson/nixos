@@ -89,7 +89,7 @@
     enable = true;
     font = {
       name = "M+1Code Nerd Font";
-      size = 12;
+      size = 14;
     };
     shellIntegration.enableBashIntegration = true;
   };
