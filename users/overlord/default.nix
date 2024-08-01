@@ -82,7 +82,7 @@
     cycle = true;
     theme = "paper-float";
     package = pkgs.rofi-wayland;
-    plugins = with pkgs; [ rofi-top rofi-calc ];
+    plugins = [ pkgs.rofi-top pkgs.rofi-calc ];
   };
 
   programs.kitty = {
@@ -92,6 +92,12 @@
       size = 12;
     };
     shellIntegration.enableBashIntegration = true;
+  };
+
+  programs.alacritty = {
+    enable = true;
+    #settings = {
+    #};
   };
 
   programs.foot = {
@@ -142,32 +148,37 @@
   };
 
   home.packages = with pkgs; [
+    # Utilities
+    # =========
     xwayland
     xterm
     pwvucontrol ## TODO: Replace with an EWW widget
-    macchina
+    #macchina
     fastfetch
     htop
-    brave
     teapot
-    unstable.protonmail-desktop
-    #insecure-obsidian
-    obsidian
-    prismlauncher ## Minecraft launcher
-    #* Hyprland
+    # Hyprland
+    # ========
     swww 
     cliphist
     wl-clipboard
     rofi-bluetooth
+    # Desktop
+    # =======
+    brave
+    unstable.protonmail-desktop
+    #insecure-obsidian
+    obsidian
+    prismlauncher ## Minecraft launcher
   ];
 
-  xdg.configFile."macchina/macchina.toml".text = ''
-    theme = "primary"
-  '';
-  xdg.configFile."macchina/themes/primary.toml".text = ''
-    hide_ascii = true
-    separator = ""
-    [box]
-    visible = true
-  '';
+  #xdg.configFile."macchina/macchina.toml".text = ''
+  #  theme = "primary"
+  #'';
+  #xdg.configFile."macchina/themes/primary.toml".text = ''
+  #  hide_ascii = true
+  #  separator = ""
+  #  [box]
+  #  visible = true
+  #'';
 }
