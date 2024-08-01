@@ -48,7 +48,7 @@
       bind = [
 	      "$mainMod, L, exec, rofi -show drun -display-drun 'Launch'"
 	      "$mainMod, K, killactive"
-        "$mainMod, J, exec, foot"
+        "$mainMod, J, exec, kitty"
         "$mainMod, T, exec, rofi -show top -modi top -display-top 'Top'"
         ''$mainMod, E, exec, rofi -show calc -modi calc -display-calc 'Expression' -no-show-match -no-sort -no-persist-history -calc-command "wtype '{result}'"''
 	      "$mainMod, D, exec, rofi-bluetooth"

@@ -17,10 +17,10 @@ in {
       tailwindcss-language-server
     ];
     plugins = with pkgs.vimPlugins; [
-      { 
-        plugin = nix-colors-lib.vimThemeFromScheme { scheme = config.colorscheme; };
-        config = "colorscheme nix-${config.colorscheme.slug}";
-      }
+      #{ 
+      #  plugin = nix-colors-lib.vimThemeFromScheme { scheme = config.colorscheme; };
+      #  config = "colorscheme nix-${config.colorscheme.slug}";
+      #}
       {
         plugin = nvim-web-devicons;
         type = "lua";

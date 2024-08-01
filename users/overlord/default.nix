@@ -147,7 +147,6 @@
     xwayland
     xterm
     pwvucontrol ## TODO: Replace with an EWW widget
-    #macchina
     fastfetch
     htop
     teapot
@@ -165,14 +164,4 @@
     obsidian
     prismlauncher ## Minecraft launcher
   ];
-
-  #xdg.configFile."macchina/macchina.toml".text = ''
-  #  theme = "primary"
-  #'';
-  #xdg.configFile."macchina/themes/primary.toml".text = ''
-  #  hide_ascii = true
-  #  separator = ""
-  #  [box]
-  #  visible = true
-  #'';
 }
