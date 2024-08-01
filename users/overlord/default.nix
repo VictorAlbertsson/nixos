@@ -148,6 +148,7 @@
     xterm
     pwvucontrol ## TODO: Replace with an EWW widget
     fastfetch
+    cmatrix
     htop
     teapot
     # Hyprland
