@@ -49,7 +49,8 @@
     ;; TODO: Bluetooth module
     ;; TODO: Volume module
     "  ${time.hour}:${time.min}"
-    "󰖩  ${round(EWW_NET[interface].NET_UP / 1000000, 2)} ${round(EWW_NET[interface].NET_DOWN / 1000000, 2)}"
+    "󰖩  ${network}"
+    ;"󰖩  ${round(EWW_NET[interface].NET_UP / 1000000, 2)} ${round(EWW_NET[interface].NET_DOWN / 1000000, 2)}"
     "  ${volume}"
     ;;"  ${time.hour}:${time.min}   󰖩  ${round(EWW_NET[interfaceId].NET_UP / 1000000, 2)} ${round(EWW_NET[interfaceId].NET_DOWN / 1000000, 2)}    ${volume}"
   ))
@@ -85,12 +86,12 @@
 (defpoll time :interval "1s" :initial `date +'{"hour":"%H","min":"%M"}'`
   `date +'{"hour":"%H","min":"%M"}'`)
 
-(defpoll network :interval "1s" :initial `N/A`
-  `nmcli -t -f SIGNAL,ACTIVE device wifi \
-    | awk -F':' '{if($2=="yes")print$1}'`)
+;(defpoll network :interval "1s" :initial `N/A`
+;  `nmcli -t -f SIGNAL,ACTIVE device wifi \
+;    | awk -F':' '{if($2=="yes")print$1}'`)
 
-(defpoll interface :interval "60s"
-  "route | grep default | awk '{print $8}'")
+(defpoll network :interval "1s"
+  `ping -n -c 1 -W 1 8.8.8.8 | sed -rn 's/.*time=([0-9]{1,})\.?[0-9]{0,} ms.*/\1/p'`)
 
 (defpoll volume :interval "1s" :initial "N/A"
   `awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master) | tr -d '[]%'`)
