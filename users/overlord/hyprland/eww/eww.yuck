@@ -47,7 +47,7 @@
     ;; TODO: Bluetooth module
     ;; TODO: Volume module
     "  ${time.hour}:${time.min}"
-    "󰖩  ${network}"
+    "󰖩  ${ping}"
     "  ${volume}"))
 
 (defwidget window-layout []
@@ -87,11 +87,11 @@
 (defpoll time :interval "1s" :initial `date +'{"hour":"%H","min":"%M"}'`
   `date +'{"hour":"%H","min":"%M"}'`)
 
-(defpoll network :interval "5s" :initial "N/A"
-  "./scripts/ping.sh")
+(defpoll ping :interval "5s" :initial "N/A"
+  `./scripts/ping.sh`)
 
 (defpoll volume :interval "1s" :initial "N/A"
   `awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master) | tr -d '[]%'`)
 
 (deflisten window :initial "N/A"
-  `sh ./scripts/window.sh`)
+  `./scripts/window.sh`)
