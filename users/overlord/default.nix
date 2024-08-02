@@ -151,6 +151,9 @@
     cmatrix
     htop
     teapot
+    timer
+    pom
+    peaclock
     # Hyprland
     # ========
     swww 
