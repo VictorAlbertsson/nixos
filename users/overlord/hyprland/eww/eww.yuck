@@ -48,7 +48,7 @@
     ;; TODO: Bluetooth module
     ;; TODO: Volume module
     "  ${time.hour}:${time.min}"
-    "󰖩  ${round(EWW_NET[interfaceId].NET_UP / 1000000, 2)} ${round(EWW_NET[interfaceId].NET_DOWN / 1000000, 2)}"
+    "󰖩  ${round(EWW_NET[interface].NET_UP / 1000000, 2)} ${round(EWW_NET[interface].NET_DOWN / 1000000, 2)}"
     "  ${volume}"
     ;;"  ${time.hour}:${time.min}   󰖩  ${round(EWW_NET[interfaceId].NET_UP / 1000000, 2)} ${round(EWW_NET[interfaceId].NET_DOWN / 1000000, 2)}    ${volume}"
   ))
@@ -81,19 +81,15 @@
     (button :onclick "poweroff" " 󰅖 ")
     (button :onclick "reboot" " 󰑐 ")))
 
-(defpoll time
-  :interval "1s"
-  :initial `date +'{"hour":"%H","min":"%M"}'`
+(defpoll time :interval "1s" :initial `date +'{"hour":"%H","min":"%M"}'`
   `date +'{"hour":"%H","min":"%M"}'`)
 
-(defpoll network
-  :interval "1s"
-  :initial `N/A`
+(defpoll network :interval "1s" :initial `N/A`
   `nmcli -t -f SIGNAL,ACTIVE device wifi \
     | awk -F':' '{if($2=="yes")print$1}'`)
 
-(defpoll volume
-  :interval "1s"
-  :initial "N/A"
-  `awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master)\
-    | tr -d '[]%'`)
+(defpoll interface :interval "60s"
+  "route | grep default | awk '{print $8}'")
+
+(defpoll volume :interval "1s" :initial "N/A"
+  `awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master) | tr -d '[]%'`)
