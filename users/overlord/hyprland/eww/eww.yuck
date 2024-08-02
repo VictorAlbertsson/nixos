@@ -45,6 +45,7 @@
     :class "status"
     :valign "center"
     :space-evenly false
+    :spacing 10
     ;; TODO: Bluetooth module
     ;; TODO: Volume module
     "  ${time.hour}:${time.min}"
