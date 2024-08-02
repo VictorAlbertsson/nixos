@@ -8,14 +8,14 @@
 (defwidget master-layout []
   (centerbox
     :orientation "horizontal"
-    :space-evenly false
+    ;:space-evenly false
     (box
       :class "master"
       :orientation "horizontal"
       :halign "start"
       :valign "center"
       :spacing 25
-      :space-evenly false
+      ;:space-evenly false
       (battery-layout)
       (status-layout))
     (box)
@@ -25,7 +25,7 @@
       :halign "end"
       :valign "center"
       :spacing 25
-      :space-evenly false
+      ;:space-evenly false
       (workspace-layout)
       (button-layout))))
 
@@ -33,7 +33,7 @@
   (box
     :class "battery"
     :valign "center"
-    :space-evenly false
+    ;:space-evenly false
     (circular-progress
       :class "battery-metric"
       :valign "center"
@@ -44,15 +44,13 @@
   (box
     :class "status"
     :valign "center"
-    :space-evenly false
+    ;:space-evenly false
     :spacing 10
     ;; TODO: Bluetooth module
     ;; TODO: Volume module
     "  ${time.hour}:${time.min}"
     "󰖩  ${network}"
-    ;"󰖩  ${round(EWW_NET[interface].NET_UP / 1000000, 2)} ${round(EWW_NET[interface].NET_DOWN / 1000000, 2)}"
     "  ${volume}"
-    ;;"  ${time.hour}:${time.min}   󰖩  ${round(EWW_NET[interfaceId].NET_UP / 1000000, 2)} ${round(EWW_NET[interfaceId].NET_DOWN / 1000000, 2)}    ${volume}"
   ))
 
 (defwidget workspace-layout []
@@ -62,7 +60,7 @@
     :halign "start"
     :valign "center"
     :spacing 10
-    :space-evenly true
+    ;:space-evenly true
     (button :onclick "hyprctl dispatch workspace 1"  1)
     (button :onclick "hyprctl dispatch workspace 2"  2)
     (button :onclick "hyprctl dispatch workspace 3"  3)
@@ -90,8 +88,8 @@
 ;  `nmcli -t -f SIGNAL,ACTIVE device wifi \
 ;    | awk -F':' '{if($2=="yes")print$1}'`)
 
-(defpoll network :interval "1s"
-  `ping -n -c 1 -W 1 8.8.8.8 | sed -rn 's/.*time=([0-9]{1,})\.?[0-9]{0,} ms.*/\1/p'`)
+(defpoll network :interval "5s" :initial "N/A"
+  `ping -n -c 1 -W 1 8.8.8.8 2> /dev/null | sed -rn 's/.*time=([0-9]{1,})\.?[0-9]{0,} ms.*/\1/p'`)
 
 (defpoll volume :interval "1s" :initial "N/A"
   `awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master) | tr -d '[]%'`)
