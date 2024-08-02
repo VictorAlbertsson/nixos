@@ -99,6 +99,7 @@
     # =========
     xwayland
     xterm
+    socat
     htop
     timer
     teapot

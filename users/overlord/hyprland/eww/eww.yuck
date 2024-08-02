@@ -26,7 +26,7 @@
       :valign "center"
       :spacing 25
       :space-evenly false
-      (workspace-layout)
+      (window-layout)
       (button-layout))))
 
 (defwidget battery-layout []
@@ -48,27 +48,32 @@
     ;; TODO: Volume module
     "  ${time.hour}:${time.min}"
     "󰖩  ${network}"
-    "  ${volume}"
-  ))
+    "  ${volume}"))
 
-(defwidget workspace-layout []
+(defwidget window-layout []
   (box
-    :class "workspace"
-    :orientation "horizontal"
-    :halign "start"
+    :class "window"
     :valign "center"
-    :spacing 10
-    :space-evenly true
-    (button :onclick "hyprctl dispatch workspace 1"  1)
-    (button :onclick "hyprctl dispatch workspace 2"  2)
-    (button :onclick "hyprctl dispatch workspace 3"  3)
-    (button :onclick "hyprctl dispatch workspace 4"  4)
-    (button :onclick "hyprctl dispatch workspace 5"  5)
-    (button :onclick "hyprctl dispatch workspace 6"  6)
-    (button :onclick "hyprctl dispatch workspace 7"  7)
-    (button :onclick "hyprctl dispatch workspace 8"  8)
-    (button :onclick "hyprctl dispatch workspace 9"  9)
-    (button :onclick "hyprctl dispatch workspace 10" 0)))
+    (label :text "${window}")))
+
+;(defwidget workspace-layout []
+;  (box
+;    :class "workspace"
+;    :orientation "horizontal"
+;    :halign "start"
+;    :valign "center"
+;    :spacing 10
+;    :space-evenly true
+;    (button :onclick "hyprctl dispatch workspace 1"  1)
+;    (button :onclick "hyprctl dispatch workspace 2"  2)
+;    (button :onclick "hyprctl dispatch workspace 3"  3)
+;    (button :onclick "hyprctl dispatch workspace 4"  4)
+;    (button :onclick "hyprctl dispatch workspace 5"  5)
+;    (button :onclick "hyprctl dispatch workspace 6"  6)
+;    (button :onclick "hyprctl dispatch workspace 7"  7)
+;    (button :onclick "hyprctl dispatch workspace 8"  8)
+;    (button :onclick "hyprctl dispatch workspace 9"  9)
+;    (button :onclick "hyprctl dispatch workspace 10" 0)))
 
 (defwidget button-layout []
   (box
@@ -83,7 +88,10 @@
   `date +'{"hour":"%H","min":"%M"}'`)
 
 (defpoll network :interval "5s" :initial "N/A"
-  "./ping.sh")
+  "./scripts/ping.sh")
 
 (defpoll volume :interval "1s" :initial "N/A"
   `awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master) | tr -d '[]%'`)
+
+(deflisten window :initial "N/A"
+  `sh ./scripts/window.sh`)
