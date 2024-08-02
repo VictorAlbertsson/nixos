@@ -8,7 +8,7 @@
 (defwidget master-layout []
   (centerbox
     :orientation "horizontal"
-    ;:space-evenly false
+    :space-evenly false
     (box
       :class "master"
       :orientation "horizontal"
