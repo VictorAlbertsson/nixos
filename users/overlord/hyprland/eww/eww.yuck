@@ -26,8 +26,10 @@
       :valign "center"
       :spacing 25
       :space-evenly false
-      (window-layout)
-      (button-layout))))
+      (control-layout)
+      ;(window-layout)
+      ;(button-layout)
+    )))
 
 (defwidget battery-layout []
   (box
@@ -45,44 +47,34 @@
     :valign "center"
     :spacing 10
     ;; TODO: Bluetooth module
-    ;; TODO: Volume module
     "  ${time.hour}:${time.min}"
     "󰖩  ${ping}"
     "  ${volume}"))
 
-(defwidget window-layout []
+(defwidget control-layout []
   (box
-    :class "window"
+    :class "control"
     :valign "center"
-    (label :text "${window}")))
-
-;(defwidget workspace-layout []
-;  (box
-;    :class "workspace"
-;    :orientation "horizontal"
-;    :halign "start"
-;    :valign "center"
-;    :spacing 10
-;    :space-evenly true
-;    (button :onclick "hyprctl dispatch workspace 1"  1)
-;    (button :onclick "hyprctl dispatch workspace 2"  2)
-;    (button :onclick "hyprctl dispatch workspace 3"  3)
-;    (button :onclick "hyprctl dispatch workspace 4"  4)
-;    (button :onclick "hyprctl dispatch workspace 5"  5)
-;    (button :onclick "hyprctl dispatch workspace 6"  6)
-;    (button :onclick "hyprctl dispatch workspace 7"  7)
-;    (button :onclick "hyprctl dispatch workspace 8"  8)
-;    (button :onclick "hyprctl dispatch workspace 9"  9)
-;    (button :onclick "hyprctl dispatch workspace 10" 0)))
-
-(defwidget button-layout []
-  (box
-    :class "button"
-    :valign "center"
-    :spacing 5
+    :spacing 10
     :space-evenly false
+    (label :text "${window} ")
     (button :onclick "poweroff" " 󰅖 ")
     (button :onclick "reboot" " 󰑐 ")))
+
+;(defwidget window-layout []
+;  (box
+;    :class "window"
+;    :valign "center"
+;    (label :text "${window}")))
+;
+;(defwidget button-layout []
+;  (box
+;    :class "button"
+;    :valign "center"
+;    :spacing 5
+;    :space-evenly false
+;    (button :onclick "poweroff" " 󰅖 ")
+;    (button :onclick "reboot" " 󰑐 ")))
 
 (defpoll time :interval "1s" :initial `date +'{"hour":"%H","min":"%M"}'`
   `date +'{"hour":"%H","min":"%M"}'`)
@@ -94,4 +86,4 @@
   `awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master) | tr -d '[]%'`)
 
 (deflisten window :initial "N/A"
-  `./scripts/window.sh`)
+  `sh ./scripts/window.sh`)
