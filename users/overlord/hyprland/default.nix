@@ -5,14 +5,30 @@
     enable = true;
     configDir = ./eww;
   };
+  #programs.waybar = {
+  #  enable = true;
+  #  settings = {
+  #    "main" = {
+  #      layer = "top";
+  #      position = "top";
+  #      height = 20;
+  #      spacing = 5;
+  #      modules-left = [
+  #        "battery"
+  #        "clock"
+  #        "network"
+  #      ];
+  #    };
+  #  };
+  #};
 
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       exec-once = [
 	      # Start `eww`
-	      "eww daemon"
-	      "eww open systembar"
+	      ## "eww daemon"
+	      ## "eww open systembar"
 	      # Set wallpaper
 	      "swww init"
 	      "swww img ~/wallpaper.jpg"

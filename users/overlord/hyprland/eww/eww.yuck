@@ -47,7 +47,11 @@
     :space-evenly false
     ;; TODO: Bluetooth module
     ;; TODO: Volume module
-    "  ${time.hour}:${time.min}   󰖩  ${network}     ${volume}"))
+    "  ${time.hour}:${time.min}"
+    "󰖩  ${round(EWW_NET[interfaceId].NET_UP / 1000000, 2)} ${round(EWW_NET[interfaceId].NET_DOWN / 1000000, 2)}"
+    "  ${volume}"
+    ;;"  ${time.hour}:${time.min}   󰖩  ${round(EWW_NET[interfaceId].NET_UP / 1000000, 2)} ${round(EWW_NET[interfaceId].NET_DOWN / 1000000, 2)}    ${volume}"
+  ))
 
 (defwidget workspace-layout []
   (box

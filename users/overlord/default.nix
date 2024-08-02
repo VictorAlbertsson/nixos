@@ -146,14 +146,13 @@
     # =========
     xwayland
     xterm
-    pwvucontrol ## TODO: Replace with an EWW widget
+    htop
+    timer
+    teapot
     fastfetch
     cmatrix
-    htop
-    teapot
-    timer
-    pom
-    peaclock
+    # TODO: Replace `pwvucontrol` with an EWW widget
+    pwvucontrol
     # Hyprland
     # ========
     swww 
@@ -164,8 +163,7 @@
     # =======
     brave
     unstable.protonmail-desktop
-    #insecure-obsidian
     obsidian
-    prismlauncher ## Minecraft launcher
+    prismlauncher
   ];
 }
