@@ -100,6 +100,7 @@
     xwayland
     xterm
     socat
+    jq
     htop
     timer
     teapot
