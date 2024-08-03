@@ -6,9 +6,7 @@
   (master-layout))
 
 (defwidget master-layout []
-  (centerbox
-    :orientation "horizontal"
-    :space-evenly false
+  (centerbox :orientation "horizontal"
     (box
       :class "master"
       :orientation "horizontal"
@@ -26,10 +24,7 @@
       :valign "center"
       :spacing 25
       :space-evenly false
-      (control-layout)
-      ;(window-layout)
-      ;(button-layout)
-    )))
+      (control-layout))))
 
 (defwidget battery-layout []
   (box
@@ -55,28 +50,14 @@
   (box
     :class "control"
     :valign "center"
+    :halign "center"
     :spacing 10
     :space-evenly false
-    (label :text "${window} ")
-    (button :onclick "poweroff" " 󰅖 ")
-    (button :onclick "reboot" " 󰑐 ")))
+    (label :text "⟪${window}⟫")
+    (button :onclick "poweroff" "󰅖")
+    (button :onclick "reboot" "󰑐")))
 
-;(defwidget window-layout []
-;  (box
-;    :class "window"
-;    :valign "center"
-;    (label :text "${window}")))
-;
-;(defwidget button-layout []
-;  (box
-;    :class "button"
-;    :valign "center"
-;    :spacing 5
-;    :space-evenly false
-;    (button :onclick "poweroff" " 󰅖 ")
-;    (button :onclick "reboot" " 󰑐 ")))
-
-(defpoll time :interval "1s" :initial `date +'{"hour":"%H","min":"%M"}'`
+(defpoll time :interval "1s" :initial `{"hour":"--","min":"--"}`
   `date +'{"hour":"%H","min":"%M"}'`)
 
 (defpoll ping :interval "5s" :initial "N/A"
