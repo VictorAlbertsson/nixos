@@ -50,17 +50,12 @@
     };
   };
 
-  services.gnome-keyring.enable = true;
+  #services.gnome-keyring.enable = true;
   programs.gpg.enable = true;
   services.gpg-agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-rofi-wayland;
+    pinentryPackage = pkgs.pinentry-qt;
   };
-  #programs.gnupg.agent = {
-  #  enable = true;
-  #  enableSSHSupport = true;
-  #  pinentryPackage = pkgs.pinentry-rofi-wayland;
-  #};
 
   services.ssh-agent.enable = true;
   programs.git = {
@@ -123,15 +118,18 @@
     # Hyprland
     # ========
     swww 
+    rbw
     cliphist
+    pinentry-all
     wl-clipboard
-    #pinentry-rofi-wayland
     rofi-bluetooth
     rofi-rbw-wayland
-    rbw
+    #rbw
     # Desktop
     # =======
     brave
+    vivaldi
+    vivaldi-ffmpeg-codecs
     unstable.protonmail-desktop
     obsidian
     prismlauncher
