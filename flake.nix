@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-colors.url = "github:misterio77/nix-colors";
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -19,7 +20,7 @@
     };
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, nix-colors, sops-nix, home-manager, hyprland, ...}:
+  outputs = { nixpkgs, nixpkgs-unstable, nixos-hardware, nix-colors, sops-nix, home-manager, hyprland, ...}:
   {
     nixosConfigurations = {
       "typewriter" = nixpkgs.lib.nixosSystem {
@@ -28,6 +29,7 @@
           inherit nixpkgs-unstable nix-colors hyprland;
         };
         modules = [
+          nixos-hardware.tuxedo-pulse-14-gen3
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           hyprland.nixosModules.default

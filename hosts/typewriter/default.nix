@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, nixos-hardware, ... }:
 let
 boot-theme = "rings";
 boot-theme-packages = pkgs.adi1090x-plymouth-themes.override {
