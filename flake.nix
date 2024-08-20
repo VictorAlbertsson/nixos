@@ -29,7 +29,7 @@
           inherit nixpkgs-unstable nix-colors hyprland;
         };
         modules = [
-          nixos-hardware.tuxedo-pulse-14-gen3
+          nixos-hardware.nixosModules.tuxedo-pulse-14-gen3
           sops-nix.nixosModules.sops
           home-manager.nixosModules.home-manager
           hyprland.nixosModules.default
