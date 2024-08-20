@@ -50,6 +50,18 @@
     };
   };
 
+  services.gnome-keyring.enable = true;
+  programs.gpg.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    pinentryPackage = pkgs.pinentry-rofi-wayland;
+  };
+  #programs.gnupg.agent = {
+  #  enable = true;
+  #  enableSSHSupport = true;
+  #  pinentryPackage = pkgs.pinentry-rofi-wayland;
+  #};
+
   services.ssh-agent.enable = true;
   programs.git = {
     enable = true;
@@ -113,7 +125,10 @@
     swww 
     cliphist
     wl-clipboard
+    #pinentry-rofi-wayland
     rofi-bluetooth
+    rofi-rbw-wayland
+    rbw
     # Desktop
     # =======
     brave
