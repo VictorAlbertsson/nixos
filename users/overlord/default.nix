@@ -82,7 +82,7 @@
     cycle = true;
     theme = "paper-float";
     package = pkgs.rofi-wayland;
-    plugins = [ pkgs.rofi-top pkgs.rofi-calc ];
+    plugins = [ pkgs.rofi-top-wayland pkgs.rofi-calc-wayland ];
   };
 
   programs.kitty = {
