@@ -22,6 +22,11 @@ in {
       #  config = "colorscheme nix-${config.colorscheme.slug}";
       #}
       {
+        plugin = onedark-nvim;
+        type = "lua";
+        config = builtins.readFile ./onedark-nvim.lua;
+      }
+      {
         plugin = nvim-web-devicons;
         type = "lua";
         config = builtins.readFile ./nvim-web-devicons.lua;

@@ -174,7 +174,7 @@ in {
     shellAliases = {
       "grep" = "grep --color=auto";
       "-c" = "clear";
-      "-l" = "eza -lhas type --color=auto";
+      "-d" = "eza -lhas type --color=auto";
       "-t" = "eza -TDhas type --color=auto";
     };
     promptInit = ''
