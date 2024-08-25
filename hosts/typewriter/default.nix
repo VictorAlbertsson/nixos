@@ -15,6 +15,10 @@ in {
     preLVM = true;
   };
 
+  zramSwap.enable = true;
+  zramSwap.memoryPercent = 25;
+
+  # NOTE: Can the `nixos-hardware` module replace this?
   hardware.tuxedo-keyboard.enable = true;
   boot.kernelParams = [
     "tuxedo_keyboard.mode=0"
@@ -24,24 +28,22 @@ in {
     "splash"
   ];
 
-  zramSwap.enable = true;
-  zramSwap.memoryPercent = 25;
-
-  hardware.cpu.amd.updateMicrocode = true;
-  powerManagement.enable = true;
-  services.auto-cpufreq = {
-    enable = true;
-    settings = {
-      battery = {
-        governor = "powersave";
-        turbo = "never";
-      };
-      charger = {
-        governor = "performance";
-        turbo = "auto";
-      };
-    };
-  };
+  # NOTE: Can the `nixos-hardware` module replace this?
+  ##hardware.cpu.amd.updateMicrocode = true;
+  ##powerManagement.enable = true;
+  ##services.auto-cpufreq = {
+  ##  enable = true;
+  ##  settings = {
+  ##    battery = {
+  ##      governor = "powersave";
+  ##      turbo = "never";
+  ##    };
+  ##    charger = {
+  ##      governor = "performance";
+  ##      turbo = "auto";
+  ##    };
+  ##  };
+  ##};
 
   hardware.enableAllFirmware = true;
   hardware.enableRedistributableFirmware = true;
@@ -64,20 +66,10 @@ in {
     configurationLimit = 10;
   };
 
-# Patch for a NetworkManager bug,
-# which causes `nixos-rebuild switch` to fail
-  systemd.services."NetworkManager-wait-online".enable = false;
-
   boot.plymouth = {
-    enable = true; # DEBUGGING
+    enable = true;
     theme = boot-theme;
     themePackages = [ boot-theme-packages ];
-  };
-
-  # `fwupd-efi` broken currently, also TUXEDO doesn't yet post firmware to LVFS
-  services.fwupd = {
-    enable = true;
-    package = pkgs.fwupd-efi;
   };
 
   sops = {
@@ -87,6 +79,12 @@ in {
       "pvpn-key" = {};
     };
   };
+
+  services.fwupd.enable = true;
+
+# Patch for a NetworkManager bug,
+# which causes `nixos-rebuild switch` to fail
+  systemd.services."NetworkManager-wait-online".enable = false;
 
 #services.openssh.enable = true;
   networking = {
@@ -111,7 +109,7 @@ in {
     enable = true;
     driSupport = true;
     extraPackages = with pkgs; [
-      amdvlk
+      amdvlk ## TODO: Consider `radeon`
       mesa
     ];
   };
