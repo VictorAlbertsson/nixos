@@ -53,7 +53,7 @@
         ''$mainMod, C, exec, rofi -show calc -modi calc -display-calc 'Calc' -no-show-match -no-sort -no-persist-history -calc-command "wtype '{result}'"''
 	      "$mainMod, H, exec, cliphist list | rofi -dmenu -p 'History' | cliphist decode | wl-copy"
 	      "$mainMod, B, exec, rofi-bluetooth"
-	      "$mainMod, P, exec, rofi-rbw"
+	      "$mainMod, P, exec, rofi-rbw --typer wtype --clipboarder wl-copy --clear-after 30"
 	      "$mainMod, O, togglefloating,"
 	      "$mainMod, I, togglesplit,"
 	      "$mainMod, left, movefocus, l"

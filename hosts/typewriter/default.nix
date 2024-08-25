@@ -75,10 +75,10 @@ in {
   };
 
   # `fwupd-efi` broken currently, also TUXEDO doesn't yet post firmware to LVFS
-  ## services.fwupd = {
-  ##   enable = true;
-  ##   package = pkgs.fwupd-efi;
-  ## };
+  services.fwupd = {
+    enable = true;
+    package = pkgs.fwupd-efi;
+  };
 
   sops = {
     defaultSopsFile = ./secrets.yaml;
