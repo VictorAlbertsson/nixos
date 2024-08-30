@@ -1,6 +1,3 @@
 #!/usr/bin/env bash
-eww close-all
 sudo nixos-rebuild test --flake ./
-eww open systembar
-
 git diff -U0

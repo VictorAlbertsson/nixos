@@ -4,6 +4,7 @@
     nix-colors.homeManagerModule
     ./hyprland
     ./neovim
+    ./emacs
   ];
 
   programs.home-manager.enable = true;
