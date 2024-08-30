@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-sudo nixos-rebuild switch --flake ./
 current=$(nixos-rebuild list-generations | grep current)
 git commit -am "$current"
+git push
