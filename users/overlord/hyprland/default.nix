@@ -46,20 +46,15 @@
 	      ", XF86AudioPrev, exec, playerctl prev"
       ];
       bind = [
-	      "$mainMod, space, exec, rofi -show drun -display-drun 'Launch'"
-	      "$mainMod, escape, killactive"
-        "$mainMod, E, exec, kitty"
-        "$mainMod, T, exec, rofi -show top -modi top -display-top 'Top'"
-        ''$mainMod, C, exec, rofi -show calc -modi calc -display-calc 'Calc' -no-show-match -no-sort -no-persist-history -calc-command "wtype '{result}'"''
+	      "$mainMod, L, exec, rofi -show drun -display-drun 'Launch'"
+	      "$mainMod, K, killactive"
+        "$mainMod, J, exec, kitty"
+        "$mainMod, O, exec, rofi -show top -modi top -display-top 'Top'"
+        ''$mainMod, M, exec, rofi -show calc -modi calc -display-calc 'Calc' -no-show-match -no-sort -no-persist-history -calc-command "wtype '{result}'"''
 	      "$mainMod, H, exec, cliphist list | rofi -dmenu -p 'History' | cliphist decode | wl-copy"
-	      "$mainMod, B, exec, rofi-bluetooth"
-	      "$mainMod, P, exec, rofi-rbw --typer wtype --clipboarder wl-copy --clear-after 30"
+	      "$mainMod, U, exec, rofi-bluetooth"
+	      "$mainMod, I, exec, rofi-rbw --typer wtype --clipboarder wl-copy --clear-after 30"
 	      "$mainMod, F, togglefloating,"
-	      ##"$mainMod, I, togglesplit,"
-        "$mainMod, J, sendshortcut, left"
-        "$mainMod, L, sendshortcut, right"
-        "$mainMod, I, sendshortcut, up"
-        "$mainMod, K, sendshortcut, down"
 	      "$mainMod, left, movefocus, l"
 	      "$mainMod, right, movefocus, r"
 	      "$mainMod, up, movefocus, u"
