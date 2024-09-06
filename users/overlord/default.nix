@@ -108,6 +108,7 @@
     xwayland
     xterm
     socat
+    zoxide
     jq
     htop
     timer
